@@ -17,13 +17,14 @@ export function ContactForm({ onSubmit }) {
     number: '',
   };
 
-  const handleSubmit = values => {
+  const handleSubmit = (values, { resetForm }) => {
     const newContact = {
       id: nanoid(),
       ...values,
     };
 
     onSubmit(newContact);
+    resetForm();
   };
 
   const validationSchema = Yup.object({
