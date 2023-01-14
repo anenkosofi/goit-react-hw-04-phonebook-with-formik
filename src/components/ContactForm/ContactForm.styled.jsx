@@ -1,6 +1,7 @@
+import { Form, Field, ErrorMessage } from 'formik';
 import styled from 'styled-components';
 
-const Form = styled.form`
+const FormForAddingContacts = styled(Form)`
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -9,10 +10,10 @@ const Form = styled.form`
 
   background-color: #fefefe;
 
-  box-shadow: 0px 15px 35px -5px rgba(50, 88, 130, 0.32);
+  box-shadow: 0px 12px 16px -4px rgba(50, 88, 130, 0.32);
   border-radius: 15px;
 `;
-const Field = styled.div`
+const FormControl = styled.div`
   position: relative;
 `;
 
@@ -34,8 +35,8 @@ const Label = styled.label`
     color 250ms cubic-bezier(0.4, 0, 0.2, 1),
     background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-  Input:focus ~ &,
-  Input:not(:placeholder-shown) ~ & {
+  input:focus ~ &,
+  input:not(:placeholder-shown) ~ & {
     transform: translateY(-35px) scale(0.8);
 
     color: #010101;
@@ -43,7 +44,7 @@ const Label = styled.label`
   }
 `;
 
-const Input = styled.input`
+const Input = styled(Field)`
   width: 100%;
   height: 50px;
   padding: 8px 16px;
@@ -63,6 +64,20 @@ const Input = styled.input`
   &:not(:placeholder-shown) {
     border-color: #010101;
   }
+
+  &:not(:focus) {
+    border-color: rgb(200, 200, 200);
+  }
+`;
+
+const Error = styled(ErrorMessage)`
+  position: absolute;
+  bottom: -30%;
+  left: 4px;
+
+  font-size: 12px;
+
+  color: #ff4500;
 `;
 
 const Button = styled.button`
@@ -83,8 +98,7 @@ const Button = styled.button`
   cursor: pointer;
 
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   z-index: 1;
   overflow: hidden;
@@ -107,7 +121,6 @@ const Button = styled.button`
   &:focus {
     color: #fefefe;
     border-color: #1d976c;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1);
   }
 
   &:hover:before,
@@ -116,4 +129,4 @@ const Button = styled.button`
   }
 `;
 
-export { Form, Field, Label, Input, Button };
+export { FormForAddingContacts, FormControl, Label, Input, Error, Button };
